@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+</head>
+<body>
+    <h2>Assignment 7</h2>
+    <!--TO-DO LIST-->
+    <div class="box">
+        <h3>To-Do List</h3>
+        <input type="text" id="taskinput"placeholder="Enter your task">
+        <button onclick="addtask()">Add</button>
+        <ul id="tasklist"></ul>
+    </div>
+        <!--2 counter-->
+        <div class="box">
+        <h3>Counter</h3>
+        <p id="count">0</p>
+        <button onclick="increase()">Increase +</button>
+        <button onclick="decrease()">Decrease -</button>
+    </div> 
+    <!--image changer-->
+    <div class="box">
+        <h3>Change Image</h3>
+        <img id="myimage" src="flower.jpg" width="300">
+        <br></br>
+        <button onclick="changeImage()">Change Image</button>
+    </div>
+        <script>
+            let counter = 0;
+            function addtask(){
+                let input = document.getElementById("taskinput");
+                let text = input.value;
+                if(text === ""){
+                    alert("Please enter a task");
+                    return;
+                }
+                let li = document.createElement("li");
+                li.innerHTML = text + '<button onclick="this.parentElement.remove()">Delete</button>';
+                document.getElementById("tasklist").appendChild(li);
+                input.value = "";
+            }
+            function increase(){
+                counter++;
+                document.getElementById("count").innerText = counter;
+            }
+            function decrease(){
+                counter--;
+                document.getElementById("count").innerText = counter;
+            }
+            let images = ["flower.jpg", "cat.jpg", "mountain.jpg"];
+            let i = 0;
+            function changeImage(){
+                i++;
+                if(i >= images.length){i = 0; }
+                document.getElementById("myimage").src = images[i];
+            }
+        </script>
+    
+    
+</body>
+</html>
